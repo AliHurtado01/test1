@@ -105,7 +105,7 @@ class _ProductsList extends StatelessWidget {
     return Flexible(
       child: ListView.separated(
         itemCount: products.length,
-        separatorBuilder: (_, __) => const Divider(),
+        separatorBuilder: (_, _) => const Divider(),
         itemBuilder: (context, index) {
           final product = products[index];
           return _ProductItem(product: product);

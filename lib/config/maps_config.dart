@@ -50,7 +50,7 @@ class MapFetchConfig {
       bufferMultiplier: bufferMultiplier ?? this.bufferMultiplier,
       debounceDelayMs: debounceDelayMs ?? this.debounceDelayMs,
       minZoomChangeForFetch:
-          minZoomChangeForFetch ?? this.minZoomChangeForFetch,
+      minZoomChangeForFetch ?? this.minZoomChangeForFetch,
       zoomStep: zoomStep ?? this.zoomStep,
       apiBaseUrl: apiBaseUrl ?? this.apiBaseUrl,
     );

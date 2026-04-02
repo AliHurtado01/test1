@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "marker_id": "marker_001",
+      "category": "restaurant",
+      "latitude": 48.8566,
+      "longitude": 2.3522,
+      "count": 1
+    },
+    {
+      "marker_id": "marker_002",
+      "category": "hotel",
+      "latitude": 48.8584,
+      "longitude": 2.3533,
+      "count": 1
+    },
+    {
+      "marker_id": "marker_003",
+      "category": "store",
+      "latitude": 48.8590,
+      "longitude": 2.3500,
+      "count": 1
+    },
+    {
+      "marker_id": "marker_004",
+      "category": "restaurant",
+      "latitude": 48.8610,
+      "longitude": 2.3550,
+      "count": 1
+    },
+    {
+      "marker_id": "marker_005",
+      "category": "hotel",
+      "latitude": 48.8625,
+      "longitude": 2.3510,
+      "count": 1
+    },
+    {
+      "marker_id": null,
+      "category": "cluster",
+      "latitude": 48.8600,
+      "longitude": 2.3600,
+      "count": 12
+    }
+  ]
+}

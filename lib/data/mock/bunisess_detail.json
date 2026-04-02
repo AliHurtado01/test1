@@ -1,0 +1,52 @@
+[
+  {
+    "id": "biz_001",
+    "nombre": "Le Petit Bistro",
+    "categoria": "restaurant",
+    "direccion": "12 Rue de Rivoli, 75001 París",
+    "telefono": "+33 1 42 60 12 34",
+    "horario": "Lun-Vie 12:00-22:00",
+    "valoracion": 4.6,
+    "total_resenas": 128
+  },
+  {
+    "id": "biz_002",
+    "nombre": "Grand Hotel Paris",
+    "categoria": "hotel",
+    "direccion": "15 Avenue des Champs-Élysées, 75008 París",
+    "telefono": "+33 1 55 55 12 12",
+    "horario": "Abierto 24 horas",
+    "valoracion": 4.9,
+    "total_resenas": 450
+  },
+  {
+    "id": "biz_003",
+    "nombre": "Boutique Elegance",
+    "categoria": "store",
+    "direccion": "45 Le Marais, 75004 París",
+    "telefono": "+33 1 33 22 11 00",
+    "horario": "Lun-Sab 10:00-20:00",
+    "valoracion": 4.2,
+    "total_resenas": 85
+  },
+  {
+    "id": "biz_004",
+    "nombre": "Café des Amis",
+    "categoria": "restaurant",
+    "direccion": "8 Place de la Bastille, 75011 París",
+    "telefono": "+33 1 44 33 22 11",
+    "horario": "Lun-Dom 08:00-23:00",
+    "valoracion": 4.4,
+    "total_resenas": 310
+  },
+  {
+    "id": "biz_005",
+    "nombre": "L'Hôtel de la Paix",
+    "categoria": "hotel",
+    "direccion": "22 Rue du Commerce, 75015 París",
+    "telefono": "+33 1 99 88 77 66",
+    "horario": "Abierto 24 horas",
+    "valoracion": 4.7,
+    "total_resenas": 215
+  }
+]

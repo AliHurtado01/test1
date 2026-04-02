@@ -1,0 +1,110 @@
+[
+  {
+    "id": "prod_001",
+    "nombre": "Croque Monsieur",
+    "descripcion": "Sándwich tostado con jamón y queso gratinado.",
+    "precio": 8.50,
+    "moneda": "EUR",
+    "disponible": true,
+    "business_id": "biz_001"
+  },
+  {
+    "id": "prod_002",
+    "nombre": "Café au Lait",
+    "descripcion": "Café espresso con leche espumada servido caliente.",
+    "precio": 3.50,
+    "moneda": "EUR",
+    "disponible": true,
+    "business_id": "biz_001"
+  },
+  {
+    "id": "prod_003",
+    "nombre": "Tarta Tatin",
+    "descripcion": "Clásica tarta de manzana caramelizada con base de hojaldre.",
+    "precio": 6.00,
+    "moneda": "EUR",
+    "disponible": false,
+    "business_id": "biz_001"
+  },
+  {
+    "id": "prod_004",
+    "nombre": "Noche en Suite",
+    "descripcion": "Habitación amplia con cama King size y vistas a la ciudad.",
+    "precio": 250.00,
+    "moneda": "EUR",
+    "disponible": true,
+    "business_id": "biz_002"
+  },
+  {
+    "id": "prod_005",
+    "nombre": "Desayuno Buffet",
+    "descripcion": "Acceso ilimitado al desayuno continental del hotel.",
+    "precio": 25.00,
+    "moneda": "EUR",
+    "disponible": true,
+    "business_id": "biz_002"
+  },
+  {
+    "id": "prod_006",
+    "nombre": "Camiseta de Algodón",
+    "descripcion": "Camiseta 100% algodón orgánico, diseño exclusivo.",
+    "precio": 29.90,
+    "moneda": "EUR",
+    "disponible": true,
+    "business_id": "biz_003"
+  },
+  {
+    "id": "prod_007",
+    "nombre": "Taza de Cerámica",
+    "descripcion": "Taza artesanal pintada a mano. Ideal para regalo.",
+    "precio": 15.00,
+    "moneda": "EUR",
+    "disponible": true,
+    "business_id": "biz_003"
+  },
+  {
+    "id": "prod_008",
+    "nombre": "Bolso de Cuero",
+    "descripcion": "Bolso de piel auténtica hecho de forma sostenible.",
+    "precio": 120.00,
+    "moneda": "EUR",
+    "disponible": false,
+    "business_id": "biz_003"
+  },
+  {
+    "id": "prod_009",
+    "nombre": "Sopa de Cebolla",
+    "descripcion": "Tradicional sopa de cebolla francesa gratinada con queso Gruyère.",
+    "precio": 12.00,
+    "moneda": "EUR",
+    "disponible": true,
+    "business_id": "biz_004"
+  },
+  {
+    "id": "prod_010",
+    "nombre": "Crêpe Suzette",
+    "descripcion": "Fina crêpe flambeada con licor de naranja y helado de vainilla.",
+    "precio": 9.50,
+    "moneda": "EUR",
+    "disponible": true,
+    "business_id": "biz_004"
+  },
+  {
+    "id": "prod_011",
+    "nombre": "Habitación Doble",
+    "descripcion": "Habitación acogedora con cama doble y baño privado.",
+    "precio": 130.00,
+    "moneda": "EUR",
+    "disponible": true,
+    "business_id": "biz_005"
+  },
+  {
+    "id": "prod_012",
+    "nombre": "Pase de Spa (1 día)",
+    "descripcion": "Acceso total a las piscinas termales, sauna y sala de relajación.",
+    "precio": 45.00,
+    "moneda": "EUR",
+    "disponible": true,
+    "business_id": "biz_005"
+  }
+]

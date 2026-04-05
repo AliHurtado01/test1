@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../models/domain/product.dart';
@@ -42,9 +43,11 @@ class _ProductsBottomSheetState extends ConsumerState<ProductsBottomSheet> {
         children: [
           Row(
             children: [
-              const Text(
-                'Products',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              Text(
+                state.isLoading || state.products.isEmpty
+                    ? 'Products'
+                    : 'Products (${state.products.length})',
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const Spacer(),
               IconButton(
@@ -83,10 +86,21 @@ class _ProductsBottomSheetState extends ConsumerState<ProductsBottomSheet> {
     }
 
     if (state.products.isEmpty) {
-      return const Center(
+      return Center(
         child: Padding(
-          padding: EdgeInsets.all(32),
-          child: Text('There are no products for this marker.'),
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.search_off, size: 48, color: Colors.grey[400]),
+              const SizedBox(height: 16),
+              Text(
+                'No se han encontrado productos para este marcador.',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.grey[600], fontSize: 16),
+              ),
+            ],
+          ),
         ),
       );
     }
@@ -124,6 +138,18 @@ class _ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
+      onTap: () async {
+        await Clipboard.setData(ClipboardData(text: product.id));
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('ID ${product.id} copiado al portapapeles'),
+              behavior: SnackBarBehavior.floating,
+              duration: const Duration(seconds: 2),
+            ),
+          );
+        }
+      },
       leading: Container(
         width: 48,
         height: 48,
@@ -137,9 +163,17 @@ class _ProductItem extends StatelessWidget {
         product.nombre,
         style: const TextStyle(fontWeight: FontWeight.w500),
       ),
-      subtitle: Text(
-        'ID: ${product.id}',
-        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+      subtitle: Container(
+        margin: const EdgeInsets.only(top: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Text(
+          'Negocio: ${product.businessId}',
+          style: TextStyle(fontSize: 12, color: Colors.grey[800], fontWeight: FontWeight.w500),
+        ),
       ),
     );
   }

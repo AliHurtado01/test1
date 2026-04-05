@@ -7,6 +7,7 @@ class MapsState {
   final LatLngBounds? lastRequestedBounds;
   final int? lastRequestedZoom;
   final LatLng? userLocation;
+  final String? error; //Añadimos el campo de error
 
   const MapsState({
     required this.initialCamera,
@@ -15,6 +16,7 @@ class MapsState {
     this.lastRequestedBounds,
     this.lastRequestedZoom,
     this.userLocation,
+    this.error, //Por defecto será null
   });
 
   MapsState copyWith({
@@ -24,6 +26,8 @@ class MapsState {
     LatLngBounds? lastRequestedBounds,
     int? lastRequestedZoom,
     LatLng? userLocation,
+    String? error,
+    bool clearError = false, //Flag para forzar la limpieza del error a null
   }) {
     return MapsState(
       initialCamera: initialCamera ?? this.initialCamera,
@@ -32,6 +36,8 @@ class MapsState {
       lastRequestedBounds: lastRequestedBounds ?? this.lastRequestedBounds,
       lastRequestedZoom: lastRequestedZoom ?? this.lastRequestedZoom,
       userLocation: userLocation ?? this.userLocation,
+      // Si clearError es true, ponemos null. Si no, tomamos el nuevo error o mantenemos el viejo.
+      error: clearError ? null : (error ?? this.error), 
     );
   }
 }

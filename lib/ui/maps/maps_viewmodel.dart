@@ -80,7 +80,7 @@ class MapViewModel extends Notifier<MapsState> {
 
     // Increment request ID to invalidate any ongoing fetches
     final currentRequestId = ++_requestId;
-    state = state.copyWith(isLoading: true);
+    state = state.copyWith(isLoading: true, clearError:true); 
 
     final expandedBounds = _expandBounds(bounds, _fetchConfig.bufferMultiplier);
 
@@ -94,7 +94,7 @@ class MapViewModel extends Notifier<MapsState> {
       zoom: currentZoomLogical,
     );
 
-    try {
+try {
       final response = await _service.fetchMarkers(request);
 
       if (currentRequestId != _requestId) return;
@@ -107,10 +107,14 @@ class MapViewModel extends Notifier<MapsState> {
         isLoading: false,
         lastRequestedBounds: expandedBounds,
         lastRequestedZoom: currentZoomLogical,
+        clearError: true,
       );
     } catch (e) {
       if (currentRequestId == _requestId) {
-        state = state.copyWith(isLoading: false);
+        state = state.copyWith(
+          isLoading: false,
+          error: 'No se pudieron cargar los marcadores. Revisa tu conexión.',
+        );
       }
     }
   }

@@ -136,8 +136,14 @@ class _ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isOutOfStock = product.stock <= 0;
+    final stockColor = isOutOfStock ? Colors.red[700] : Colors.green[700];
+    final stockBackgroundColor = isOutOfStock ? Colors.red[50] : Colors.green[50];
+    final stockText = isOutOfStock ? 'Agotado' : 'Stock: ${product.stock}';
+
     return ListTile(
       contentPadding: EdgeInsets.zero,
+      
       onTap: () async {
         await Clipboard.setData(ClipboardData(text: product.id));
         if (context.mounted) {
@@ -150,29 +156,52 @@ class _ProductItem extends StatelessWidget {
           );
         }
       },
+      
       leading: Container(
         width: 48,
         height: 48,
         decoration: BoxDecoration(
-          color: Colors.blue[50],
+          color: Theme.of(context).colorScheme.primaryContainer, // Usamos el tema de la app
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Icon(Icons.inventory_2_outlined, color: Colors.blue[700]),
+        child: Icon(Icons.inventory_2_outlined, color: Theme.of(context).colorScheme.primary),
       ),
+      
       title: Text(
         product.nombre,
         style: const TextStyle(fontWeight: FontWeight.w500),
       ),
-      subtitle: Container(
-        margin: const EdgeInsets.only(top: 4),
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      
+      subtitle: Align(
+        alignment: Alignment.centerLeft, // Para que el container no ocupe todo el ancho
+        child: Container(
+          margin: const EdgeInsets.only(top: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.circular(4),
+          ),
+          child: Text(
+            'Negocio: ${product.businessId}',
+            style: TextStyle(fontSize: 12, color: Colors.grey[800], fontWeight: FontWeight.w500),
+          ),
+        ),
+      ),
+
+      //Trailing del stock
+      trailing: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: BorderRadius.circular(4),
+          color: stockBackgroundColor,
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Text(
-          'Negocio: ${product.businessId}',
-          style: TextStyle(fontSize: 12, color: Colors.grey[800], fontWeight: FontWeight.w500),
+          stockText,
+          style: TextStyle(
+            color: stockColor,
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

@@ -113,7 +113,7 @@ class _MapsScreenState extends ConsumerState<MapsScreen>
     return Scaffold(
       appBar: AppBar(
         title: const Text('Maps', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.blue,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Stack(
         children: [
@@ -173,11 +173,11 @@ class _MapsScreenState extends ConsumerState<MapsScreen>
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  _buildFilterChip(CategoryMarker.restaurant, Icons.restaurant, 'Restaurantes', activeFilters),
+                  _buildFilterChip(CategoryMarker.restaurant, Icons.restaurant, 'Restaurantes', activeFilters, context),
                   const SizedBox(width: 8),
-                  _buildFilterChip(CategoryMarker.hotel, Icons.hotel, 'Hoteles', activeFilters),
+                  _buildFilterChip(CategoryMarker.hotel, Icons.hotel, 'Hoteles', activeFilters, context),
                   const SizedBox(width: 8),
-                  _buildFilterChip(CategoryMarker.store, Icons.store, 'Tiendas', activeFilters),
+                  _buildFilterChip(CategoryMarker.store, Icons.store, 'Tiendas', activeFilters, context),
                 ],
               ),
             ),
@@ -187,29 +187,27 @@ class _MapsScreenState extends ConsumerState<MapsScreen>
     );
   }
 
-Widget _buildFilterChip(CategoryMarker category, IconData icon, String label, Set<CategoryMarker> activeFilters) {
+Widget _buildFilterChip(CategoryMarker category, IconData icon, String label, Set<CategoryMarker> activeFilters, BuildContext context) {
     final isSelected = activeFilters.contains(category);
-    
+    final primaryColor = Theme.of(context).colorScheme.primary; 
     return FilterChip(
       avatar: Icon(
         icon, 
         size: 18, 
-        // Cambiamos el color del icono para que contraste bien
-        color: isSelected ? Colors.white : Colors.blue.shade700, 
+        color: isSelected ? Colors.white : primaryColor, 
       ),
       label: Text(
         label,
-        // Cambiamos el color del texto para que contraste bien
         style: TextStyle(
           color: isSelected ? Colors.white : Colors.black87,
           fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
         ),
       ),
       selected: isSelected,
-      selectedColor: Colors.blue,
-      backgroundColor: Colors.white,
-      checkmarkColor: Colors.white,
-      elevation: isSelected ? 4 : 1,
+      selectedColor: primaryColor,
+      backgroundColor: Colors.white, 
+      checkmarkColor: Colors.white, 
+      elevation: isSelected ? 4 : 1, 
       onSelected: (bool selected) {
         ref.read(categoryFilterProvider.notifier).toggleCategory(category);
       },

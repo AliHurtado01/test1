@@ -5,7 +5,7 @@
     "descripcion": "Sándwich tostado con jamón y queso gratinado.",
     "precio": 8.50,
     "moneda": "EUR",
-    "disponible": true,
+    "stock": 15,
     "business_id": "biz_001"
   },
   {
@@ -14,7 +14,7 @@
     "descripcion": "Café espresso con leche espumada servido caliente.",
     "precio": 3.50,
     "moneda": "EUR",
-    "disponible": true,
+    "stock": 5,
     "business_id": "biz_001"
   },
   {
@@ -23,7 +23,7 @@
     "descripcion": "Clásica tarta de manzana caramelizada con base de hojaldre.",
     "precio": 6.00,
     "moneda": "EUR",
-    "disponible": false,
+    "stock": 7,
     "business_id": "biz_001"
   },
   {
@@ -32,7 +32,7 @@
     "descripcion": "Habitación amplia con cama King size y vistas a la ciudad.",
     "precio": 250.00,
     "moneda": "EUR",
-    "disponible": true,
+    "stock": 3,
     "business_id": "biz_002"
   },
   {
@@ -41,7 +41,7 @@
     "descripcion": "Acceso ilimitado al desayuno continental del hotel.",
     "precio": 25.00,
     "moneda": "EUR",
-    "disponible": true,
+    "stock": 15,
     "business_id": "biz_002"
   },
   {
@@ -50,7 +50,7 @@
     "descripcion": "Camiseta 100% algodón orgánico, diseño exclusivo.",
     "precio": 29.90,
     "moneda": "EUR",
-    "disponible": true,
+    "stock": 20,
     "business_id": "biz_003"
   },
   {
@@ -59,7 +59,7 @@
     "descripcion": "Taza artesanal pintada a mano. Ideal para regalo.",
     "precio": 15.00,
     "moneda": "EUR",
-    "disponible": true,
+    "stock": 12,
     "business_id": "biz_003"
   },
   {
@@ -68,7 +68,7 @@
     "descripcion": "Bolso de piel auténtica hecho de forma sostenible.",
     "precio": 120.00,
     "moneda": "EUR",
-    "disponible": false,
+    "stock": 8,
     "business_id": "biz_003"
   },
   {
@@ -77,7 +77,7 @@
     "descripcion": "Tradicional sopa de cebolla francesa gratinada con queso Gruyère.",
     "precio": 12.00,
     "moneda": "EUR",
-    "disponible": true,
+    "stock": 10,
     "business_id": "biz_004"
   },
   {
@@ -86,7 +86,7 @@
     "descripcion": "Fina crêpe flambeada con licor de naranja y helado de vainilla.",
     "precio": 9.50,
     "moneda": "EUR",
-    "disponible": true,
+    "stock": 5,
     "business_id": "biz_004"
   },
   {
@@ -95,7 +95,7 @@
     "descripcion": "Habitación acogedora con cama doble y baño privado.",
     "precio": 130.00,
     "moneda": "EUR",
-    "disponible": true,
+    "stock": 4,
     "business_id": "biz_005"
   },
   {
@@ -104,7 +104,7 @@
     "descripcion": "Acceso total a las piscinas termales, sauna y sala de relajación.",
     "precio": 45.00,
     "moneda": "EUR",
-    "disponible": true,
+    "stock": 10,
     "business_id": "biz_005"
   }
 ]

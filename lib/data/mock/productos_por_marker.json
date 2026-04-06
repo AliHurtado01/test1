@@ -2,61 +2,73 @@
   {
     "id": "prod_001",
     "nombre": "Croque Monsieur",
-    "business_id": "biz_001"
+    "business_id": "biz_001",
+    "stock":10
   },
   {
     "id": "prod_002",
     "nombre": "Café au Lait",
-    "business_id": "biz_001"
+    "business_id": "biz_001",
+    "stock":5
   },
   {
     "id": "prod_003",
     "nombre": "Tarta Tatin",
-    "business_id": "biz_001"
+    "business_id": "biz_001",
+    "stock":7
   },
   {
     "id": "prod_004",
     "nombre": "Noche en Suite",
-    "business_id": "biz_002"
+    "business_id": "biz_002",
+    "stock":3
   },
   {
     "id": "prod_005",
     "nombre": "Desayuno Buffet",
-    "business_id": "biz_002"
+    "business_id": "biz_002",
+    "stock":15
   },
   {
     "id": "prod_006",
     "nombre": "Camiseta de Algodón",
-    "business_id": "biz_003"
+    "business_id": "biz_003",
+    "stock":20
   },
   {
     "id": "prod_007",
     "nombre": "Taza de Cerámica",
-    "business_id": "biz_003"
+    "business_id": "biz_003",
+    "stock":12
   },
   {
     "id": "prod_008",
     "nombre": "Bolso de Cuero",
-    "business_id": "biz_003"
+    "business_id": "biz_003",
+    "stock":8
   },
   {
     "id": "prod_009",
     "nombre": "Sopa de Cebolla",
-    "business_id": "biz_004"
+    "business_id": "biz_004",
+    "stock":10
   },
   {
     "id": "prod_010",
     "nombre": "Crêpe Suzette",
-    "business_id": "biz_004"
+    "business_id": "biz_004",
+    "stock":5
   },
   {
     "id": "prod_011",
     "nombre": "Habitación Doble",
-    "business_id": "biz_005"
+    "business_id": "biz_005",
+    "stock":4
   },
   {
     "id": "prod_012",
     "nombre": "Pase de Spa (1 día)",
-    "business_id": "biz_005"
+    "business_id": "biz_005",
+    "stock":10
   }
 ]

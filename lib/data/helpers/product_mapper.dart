@@ -9,6 +9,7 @@ class ProductMapper {
             id: dto.id,
             nombre: dto.nombre,
             businessId: dto.businessId,
+            stock: dto.stock,
           ),
         )
         .toList(growable: false);

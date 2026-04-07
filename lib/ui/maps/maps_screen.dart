@@ -71,9 +71,31 @@ class _MapsScreenState extends ConsumerState<MapsScreen>
 
 @override
   Widget build(BuildContext context) {
-    super.build(context);
-    final state = ref.watch(mapViewModelProvider);
+super.build(context);
     
+    // 1. Escuchamos cambios en el estado para disparar efectos secundarios (el SnackBar)
+    ref.listen(mapViewModelProvider, (previous, next) {
+      // Verificamos que haya un error nuevo y que sea diferente al anterior
+      if (next.error != null && next.error != previous?.error) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Row(
+              children: [
+                const Icon(Icons.error_outline, color: Colors.white),
+                const SizedBox(width: 8),
+                Expanded(child: Text(next.error!)),
+              ],
+            ),
+            backgroundColor: Colors.red.shade800,
+            behavior: SnackBarBehavior.floating, // Flotante para no tapar navegación inferior
+            duration: const Duration(seconds: 4),
+          ),
+        );
+      }
+    });
+
+    // 2. Observamos el estado para renderizar la UI
+    final state = ref.watch(mapViewModelProvider);
     //Observar el estado del filtro
     final activeFilters = ref.watch(categoryFilterProvider);
 

@@ -3,7 +3,7 @@
     "id": "prod_001",
     "nombre": "Croque Monsieur",
     "descripcion": "Sándwich tostado con jamón y queso gratinado.",
-    "precio": 8.50,
+    "precio": 8.5,
     "moneda": "EUR",
     "stock": 15,
     "business_id": "biz_001"
@@ -12,99 +12,153 @@
     "id": "prod_002",
     "nombre": "Café au Lait",
     "descripcion": "Café espresso con leche espumada servido caliente.",
-    "precio": 3.50,
+    "precio": 3.5,
     "moneda": "EUR",
-    "stock": 5,
+    "stock": 50,
     "business_id": "biz_001"
   },
   {
     "id": "prod_003",
     "nombre": "Tarta Tatin",
     "descripcion": "Clásica tarta de manzana caramelizada con base de hojaldre.",
-    "precio": 6.00,
+    "precio": 6.0,
     "moneda": "EUR",
-    "stock": 7,
+    "stock": 0,
     "business_id": "biz_001"
   },
   {
     "id": "prod_004",
     "nombre": "Noche en Suite",
     "descripcion": "Habitación amplia con cama King size y vistas a la ciudad.",
-    "precio": 250.00,
+    "precio": 250.0,
     "moneda": "EUR",
-    "stock": 3,
+    "stock": 2,
     "business_id": "biz_002"
   },
   {
     "id": "prod_005",
     "nombre": "Desayuno Buffet",
     "descripcion": "Acceso ilimitado al desayuno continental del hotel.",
-    "precio": 25.00,
+    "precio": 25.0,
     "moneda": "EUR",
-    "stock": 15,
+    "stock": 20,
     "business_id": "biz_002"
   },
   {
     "id": "prod_006",
     "nombre": "Camiseta de Algodón",
     "descripcion": "Camiseta 100% algodón orgánico, diseño exclusivo.",
-    "precio": 29.90,
+    "precio": 29.9,
     "moneda": "EUR",
-    "stock": 20,
+    "stock": 35,
     "business_id": "biz_003"
   },
   {
     "id": "prod_007",
     "nombre": "Taza de Cerámica",
     "descripcion": "Taza artesanal pintada a mano. Ideal para regalo.",
-    "precio": 15.00,
+    "precio": 15.0,
     "moneda": "EUR",
-    "stock": 12,
+    "stock": 8,
     "business_id": "biz_003"
   },
   {
     "id": "prod_008",
     "nombre": "Bolso de Cuero",
     "descripcion": "Bolso de piel auténtica hecho de forma sostenible.",
-    "precio": 120.00,
+    "precio": 120.0,
     "moneda": "EUR",
-    "stock": 8,
+    "stock": 0,
     "business_id": "biz_003"
   },
   {
     "id": "prod_009",
     "nombre": "Sopa de Cebolla",
     "descripcion": "Tradicional sopa de cebolla francesa gratinada con queso Gruyère.",
-    "precio": 12.00,
+    "precio": 12.0,
     "moneda": "EUR",
-    "stock": 10,
+    "stock": 12,
     "business_id": "biz_004"
   },
   {
     "id": "prod_010",
     "nombre": "Crêpe Suzette",
     "descripcion": "Fina crêpe flambeada con licor de naranja y helado de vainilla.",
-    "precio": 9.50,
+    "precio": 9.5,
     "moneda": "EUR",
-    "stock": 5,
+    "stock": 10,
     "business_id": "biz_004"
   },
   {
     "id": "prod_011",
     "nombre": "Habitación Doble",
     "descripcion": "Habitación acogedora con cama doble y baño privado.",
-    "precio": 130.00,
+    "precio": 130.0,
     "moneda": "EUR",
-    "stock": 4,
+    "stock": 5,
     "business_id": "biz_005"
   },
   {
     "id": "prod_012",
     "nombre": "Pase de Spa (1 día)",
     "descripcion": "Acceso total a las piscinas termales, sauna y sala de relajación.",
-    "precio": 45.00,
+    "precio": 45.0,
     "moneda": "EUR",
-    "stock": 10,
+    "stock": 15,
     "business_id": "biz_005"
+  },
+  {
+    "id": "prod_013",
+    "nombre": "Entrada General Museo",
+    "descripcion": "Acceso completo a las exposiciones permanentes y temporales.",
+    "precio": 17.0,
+    "moneda": "EUR",
+    "stock": 100,
+    "business_id": "biz_006"
+  },
+  {
+    "id": "prod_014",
+    "nombre": "Audioguía Español",
+    "descripcion": "Dispositivo interactivo con historia detallada de las obras.",
+    "precio": 5.0,
+    "moneda": "EUR",
+    "stock": 40,
+    "business_id": "biz_006"
+  },
+  {
+    "id": "prod_015",
+    "nombre": "Alquiler Barco a Vela",
+    "descripcion": "Pequeño barco de madera para navegar en el estanque central (30 min).",
+    "precio": 6.0,
+    "moneda": "EUR",
+    "stock": 5,
+    "business_id": "biz_007"
+  },
+  {
+    "id": "prod_016",
+    "nombre": "Tour Guiado Botánico",
+    "descripcion": "Recorrido por los jardines descubriendo especies exóticas.",
+    "precio": 12.0,
+    "moneda": "EUR",
+    "stock": 0,
+    "business_id": "biz_007"
+  },
+  {
+    "id": "prod_017",
+    "nombre": "Espresso Doble",
+    "descripcion": "Doble carga de café arábica recién molido.",
+    "precio": 4.5,
+    "moneda": "EUR",
+    "stock": 80,
+    "business_id": "biz_008"
+  },
+  {
+    "id": "prod_018",
+    "nombre": "Croissant de Mantequilla",
+    "descripcion": "Recién horneado, crujiente por fuera y suave por dentro.",
+    "precio": 2.8,
+    "moneda": "EUR",
+    "stock": 25,
+    "business_id": "biz_008"
   }
 ]

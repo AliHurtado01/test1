@@ -3,72 +3,108 @@
     "id": "prod_001",
     "nombre": "Croque Monsieur",
     "business_id": "biz_001",
-    "stock":10
+    "stock": 15
   },
   {
     "id": "prod_002",
     "nombre": "Café au Lait",
     "business_id": "biz_001",
-    "stock":5
+    "stock": 50
   },
   {
     "id": "prod_003",
     "nombre": "Tarta Tatin",
     "business_id": "biz_001",
-    "stock":7
+    "stock": 0
   },
   {
     "id": "prod_004",
     "nombre": "Noche en Suite",
     "business_id": "biz_002",
-    "stock":3
+    "stock": 2
   },
   {
     "id": "prod_005",
     "nombre": "Desayuno Buffet",
     "business_id": "biz_002",
-    "stock":15
+    "stock": 20
   },
   {
     "id": "prod_006",
     "nombre": "Camiseta de Algodón",
     "business_id": "biz_003",
-    "stock":20
+    "stock": 35
   },
   {
     "id": "prod_007",
     "nombre": "Taza de Cerámica",
     "business_id": "biz_003",
-    "stock":12
+    "stock": 8
   },
   {
     "id": "prod_008",
     "nombre": "Bolso de Cuero",
     "business_id": "biz_003",
-    "stock":8
+    "stock": 0
   },
   {
     "id": "prod_009",
     "nombre": "Sopa de Cebolla",
     "business_id": "biz_004",
-    "stock":10
+    "stock": 12
   },
   {
     "id": "prod_010",
     "nombre": "Crêpe Suzette",
     "business_id": "biz_004",
-    "stock":5
+    "stock": 10
   },
   {
     "id": "prod_011",
     "nombre": "Habitación Doble",
     "business_id": "biz_005",
-    "stock":4
+    "stock": 5
   },
   {
     "id": "prod_012",
     "nombre": "Pase de Spa (1 día)",
     "business_id": "biz_005",
-    "stock":10
+    "stock": 15
+  },
+  {
+    "id": "prod_013",
+    "nombre": "Entrada General Museo",
+    "business_id": "biz_006",
+    "stock": 100
+  },
+  {
+    "id": "prod_014",
+    "nombre": "Audioguía Español",
+    "business_id": "biz_006",
+    "stock": 40
+  },
+  {
+    "id": "prod_015",
+    "nombre": "Alquiler Barco a Vela",
+    "business_id": "biz_007",
+    "stock": 5
+  },
+  {
+    "id": "prod_016",
+    "nombre": "Tour Guiado Botánico",
+    "business_id": "biz_007",
+    "stock": 0
+  },
+  {
+    "id": "prod_017",
+    "nombre": "Espresso Doble",
+    "business_id": "biz_008",
+    "stock": 80
+  },
+  {
+    "id": "prod_018",
+    "nombre": "Croissant de Mantequilla",
+    "business_id": "biz_008",
+    "stock": 25
   }
 ]

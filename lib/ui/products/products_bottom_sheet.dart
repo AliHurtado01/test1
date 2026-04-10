@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../models/domain/product.dart';
 import '../../providers/product_providers.dart';
 import 'products_state.dart';
+import '../../utils/snackbar_util.dart';
 
 class ProductsBottomSheet extends ConsumerStatefulWidget {
   final String markerId;
@@ -47,7 +48,10 @@ class _ProductsBottomSheetState extends ConsumerState<ProductsBottomSheet> {
                 state.isLoading || state.products.isEmpty
                     ? 'Products'
                     : 'Products (${state.products.length})',
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const Spacer(),
               IconButton(
@@ -138,42 +142,49 @@ class _ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isOutOfStock = product.stock <= 0;
     final stockColor = isOutOfStock ? Colors.red[700] : Colors.green[700];
-    final stockBackgroundColor = isOutOfStock ? Colors.red[50] : Colors.green[50];
+    final stockBackgroundColor = isOutOfStock
+        ? Colors.red[50]
+        : Colors.green[50];
     final stockText = isOutOfStock ? 'Agotado' : 'Stock: ${product.stock}';
 
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      
+
       onTap: () async {
         await Clipboard.setData(ClipboardData(text: product.id));
         if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('ID ${product.id} copiado al portapapeles'),
-              behavior: SnackBarBehavior.floating,
-              duration: const Duration(seconds: 2),
-            ),
+          SnackBarUtil.show(
+            context,
+            message: 'ID ${product.id} copiado al portapapeles',
+            type: SnackBarType.success,
+            duration: const Duration(seconds: 2),
           );
         }
       },
-      
+
       leading: Container(
         width: 48,
         height: 48,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer, // Usamos el tema de la app
+          color: Theme.of(
+            context,
+          ).colorScheme.primaryContainer, // Usamos el tema de la app
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Icon(Icons.inventory_2_outlined, color: Theme.of(context).colorScheme.primary),
+        child: Icon(
+          Icons.inventory_2_outlined,
+          color: Theme.of(context).colorScheme.primary,
+        ),
       ),
-      
+
       title: Text(
         product.nombre,
         style: const TextStyle(fontWeight: FontWeight.w500),
       ),
-      
+
       subtitle: Align(
-        alignment: Alignment.centerLeft, // Para que el container no ocupe todo el ancho
+        alignment: Alignment
+            .centerLeft, // Para que el container no ocupe todo el ancho
         child: Container(
           margin: const EdgeInsets.only(top: 4),
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -183,7 +194,11 @@ class _ProductItem extends StatelessWidget {
           ),
           child: Text(
             'Negocio: ${product.businessId}',
-            style: TextStyle(fontSize: 12, color: Colors.grey[800], fontWeight: FontWeight.w500),
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey[800],
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ),

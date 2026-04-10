@@ -10,36 +10,57 @@
     {
       "marker_id": "marker_002",
       "category": "hotel",
-      "latitude": 48.8584,
-      "longitude": 2.3533,
+      "latitude": 48.8606,
+      "longitude": 2.3456,
       "count": 1
     },
     {
       "marker_id": "marker_003",
       "category": "store",
-      "latitude": 48.8590,
-      "longitude": 2.3500,
+      "latitude": 48.8584,
+      "longitude": 2.3533,
       "count": 1
     },
     {
       "marker_id": "marker_004",
       "category": "restaurant",
-      "latitude": 48.8610,
-      "longitude": 2.3550,
+      "latitude": 48.854,
+      "longitude": 2.345,
       "count": 1
     },
     {
       "marker_id": "marker_005",
       "category": "hotel",
-      "latitude": 48.8625,
-      "longitude": 2.3510,
+      "latitude": 48.85,
+      "longitude": 2.34,
+      "count": 1
+    },
+    {
+      "marker_id": "marker_006",
+      "category": "museum",
+      "latitude": 48.8606,
+      "longitude": 2.3376,
+      "count": 1
+    },
+    {
+      "marker_id": "marker_007",
+      "category": "park",
+      "latitude": 48.8462,
+      "longitude": 2.3371,
+      "count": 1
+    },
+    {
+      "marker_id": "marker_008",
+      "category": "cafe",
+      "latitude": 48.8541,
+      "longitude": 2.3326,
       "count": 1
     },
     {
       "marker_id": null,
       "category": "cluster",
-      "latitude": 48.8600,
-      "longitude": 2.3600,
+      "latitude": 48.86,
+      "longitude": 2.36,
       "count": 12
     }
   ]

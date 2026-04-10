@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../providers/maps_providers.dart';
 import '../../models/domain/category_marker.dart';
+import '../../utils/snackbar_util.dart';
 
 class MapsScreen extends ConsumerStatefulWidget {
   final void Function(String markerId) onMarkerTap;
@@ -69,68 +70,60 @@ class _MapsScreenState extends ConsumerState<MapsScreen>
     }
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
-super.build(context);
-    
-    // 1. Escuchamos cambios en el estado para disparar efectos secundarios (el SnackBar)
+    super.build(context);
     ref.listen(mapViewModelProvider, (previous, next) {
-      // Verificamos que haya un error nuevo y que sea diferente al anterior
       if (next.error != null && next.error != previous?.error) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Row(
-              children: [
-                const Icon(Icons.error_outline, color: Colors.white),
-                const SizedBox(width: 8),
-                Expanded(child: Text(next.error!)),
-              ],
-            ),
-            backgroundColor: Colors.red.shade800,
-            behavior: SnackBarBehavior.floating, // Flotante para no tapar navegación inferior
-            duration: const Duration(seconds: 4),
-          ),
+        // Usamos nuestro utilitario con una sola línea
+        SnackBarUtil.show(
+          context,
+          message: next.error!,
+          type: SnackBarType.error,
         );
       }
     });
 
-    // 2. Observamos el estado para renderizar la UI
     final state = ref.watch(mapViewModelProvider);
-    //Observar el estado del filtro
     final activeFilters = ref.watch(categoryFilterProvider);
 
     _moveToUserLocation(state.userLocation);
 
-    //Aplicar la lógica de filtrado
-    final markersOnTab = state.markers.where((marker) {
-      // Los clusters siempre se muestran
-      if (marker.markerId.value.startsWith('cluster_')) {
-        return true;
-      }
-      
-      // Usamos el id del marcador para buscar la correspondencia
-      CategoryMarker category;
-      if (marker.markerId.value == 'marker_001' || marker.markerId.value == 'marker_004') {
-        category = CategoryMarker.restaurant;
-      } else if (marker.markerId.value == 'marker_002' || marker.markerId.value == 'marker_005') {
-        category = CategoryMarker.hotel;
-      } else if (marker.markerId.value == 'marker_003') {
-        category = CategoryMarker.store;
-      } else {
-        category = CategoryMarker.store; // fallback
-      }
+    final markersOnTab = state.markers
+        .where((marker) {
+          // Los clusters siempre se muestran
+          if (marker.markerId.value.startsWith('cluster_')) {
+            return true;
+          }
 
-      // Regla 3: Si la categoría está activa, lo mostramos
-      return activeFilters.contains(category);
-      
-    }).map((marker) {
-      if (marker.markerId.value.startsWith('cluster_')) {
-        return marker;
-      }
-      return marker.copyWith(
-        onTapParam: () => widget.onMarkerTap(marker.markerId.value),
-      );
-    }).toSet();
+          CategoryMarker category;
+          if (marker.markerId.value == 'marker_001' ||
+              marker.markerId.value == 'marker_004') {
+            category = CategoryMarker.restaurant;
+          } else if (marker.markerId.value == 'marker_002' ||
+              marker.markerId.value == 'marker_005') {
+            category = CategoryMarker.hotel;
+          } else if (marker.markerId.value == 'marker_006') {
+            category = CategoryMarker.museum; 
+          } else if (marker.markerId.value == 'marker_007') {
+            category = CategoryMarker.park; 
+          } else if (marker.markerId.value == 'marker_008') {
+            category = CategoryMarker.cafe;
+          } else {
+            category = CategoryMarker.store;
+          }
+
+          return activeFilters.contains(category);
+        })
+        .map((marker) {
+          if (marker.markerId.value.startsWith('cluster_')) {
+            return marker;
+          }
+          return marker.copyWith(
+            onTapParam: () => widget.onMarkerTap(marker.markerId.value),
+          );
+        })
+        .toSet();
 
     return Scaffold(
       appBar: AppBar(
@@ -141,7 +134,7 @@ super.build(context);
         children: [
           GoogleMap(
             initialCameraPosition: state.initialCamera,
-            markers: markersOnTab, // El mapa recibe los marcadores filtrados
+            markers: markersOnTab,
             myLocationEnabled: true,
             myLocationButtonEnabled: true,
             zoomControlsEnabled: true,
@@ -150,6 +143,9 @@ super.build(context);
               _moveToUserLocation(state.userLocation);
             },
             onCameraIdle: _handleCameraIdle,
+            onTap: (_) {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
           ),
 
           if (state.isLoading)
@@ -188,19 +184,95 @@ super.build(context);
 
           //La barra horizontal de filtros
           Positioned(
-            top: 16, // Espacio desde abajo
+            top: 16,
             left: 16,
-            right: 16, // Para que ocupe todo el ancho
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  _buildFilterChip(CategoryMarker.restaurant, Icons.restaurant, 'Restaurantes', activeFilters, context),
-                  const SizedBox(width: 8),
-                  _buildFilterChip(CategoryMarker.hotel, Icons.hotel, 'Hoteles', activeFilters, context),
-                  const SizedBox(width: 8),
-                  _buildFilterChip(CategoryMarker.store, Icons.store, 'Tiendas', activeFilters, context),
-                ],
+            right: 16,
+            child: SafeArea(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ...CategoryMarker.values
+                        .where((category) => category != CategoryMarker.cluster)
+                        .map((category) {
+                          IconData icon;
+                          String labelText;
+
+                          switch (category) {
+                            case CategoryMarker.restaurant:
+                              icon = Icons.restaurant;
+                              // Cambiar a traducción
+                              labelText = 'Restaurantes';
+                              break;
+                            case CategoryMarker.hotel:
+                              icon = Icons.hotel;
+                              labelText = 'Hoteles';
+                              break;
+                            case CategoryMarker.store:
+                              icon = Icons.store;
+                              labelText = 'Tiendas';
+                              break;
+                            case CategoryMarker.museum:
+                              icon = Icons.museum;
+                              labelText = 'Museos';
+                              break;
+                            case CategoryMarker.park:
+                              icon = Icons.park;
+                              labelText = 'Parques';
+                              break;
+                            case CategoryMarker.cafe:
+                              icon = Icons.local_cafe;
+                              labelText = 'Cafeterías';
+                              break;
+                            default:
+                              icon = Icons.place;
+                              labelText = category.name;
+                          }
+
+                          return Padding(
+                            padding: const EdgeInsets.only(right: 8.0),
+                            child: _buildFilterChip(
+                              category,
+                              icon,
+                              labelText,
+                              activeFilters,
+                              context,
+                            ),
+                          );
+                        }),
+                    //Botón fijo de "Más" al final
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0, left: 4.0),
+                      child: ActionChip(
+                        avatar: const Icon(
+                          Icons.tune,
+                          size: 18,
+                        ), // Icono de filtros
+                        label: const Text(
+                          'Más',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        backgroundColor: Colors.grey.shade100,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        onPressed: () {
+                          //Navegar a la pantalla de todos los filtros
+                          // context.push(Routes.filters);
+
+                          // Mientras hacemos la pantalla, mostramos un mensajito para probar nuestro nuevo SnackBar :)
+                          SnackBarUtil.show(
+                            context,
+                            message:
+                                'Próximamente: Pantalla de todos los filtros',
+                            type: SnackBarType.info,
+                            duration: const Duration(seconds: 2),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -209,14 +281,20 @@ super.build(context);
     );
   }
 
-Widget _buildFilterChip(CategoryMarker category, IconData icon, String label, Set<CategoryMarker> activeFilters, BuildContext context) {
+  Widget _buildFilterChip(
+    CategoryMarker category,
+    IconData icon,
+    String label,
+    Set<CategoryMarker> activeFilters,
+    BuildContext context,
+  ) {
     final isSelected = activeFilters.contains(category);
-    final primaryColor = Theme.of(context).colorScheme.primary; 
+    final primaryColor = Theme.of(context).colorScheme.primary;
     return FilterChip(
       avatar: Icon(
-        icon, 
-        size: 18, 
-        color: isSelected ? Colors.white : primaryColor, 
+        icon,
+        size: 18,
+        color: isSelected ? Colors.white : primaryColor,
       ),
       label: Text(
         label,
@@ -227,9 +305,9 @@ Widget _buildFilterChip(CategoryMarker category, IconData icon, String label, Se
       ),
       selected: isSelected,
       selectedColor: primaryColor,
-      backgroundColor: Colors.white, 
-      checkmarkColor: Colors.white, 
-      elevation: isSelected ? 4 : 1, 
+      backgroundColor: Colors.white,
+      checkmarkColor: Colors.white,
+      elevation: isSelected ? 4 : 1,
       onSelected: (bool selected) {
         ref.read(categoryFilterProvider.notifier).toggleCategory(category);
       },

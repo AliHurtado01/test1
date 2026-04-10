@@ -48,5 +48,26 @@
     "horario": "Abierto 24 horas",
     "valoracion": 4.7,
     "total_resenas": 215
+  },
+  {
+    "id": "biz_006",
+    "nombre": "Le Grand Louvre",
+    "descripcion": "El museo de arte más grande del mundo y un monumento histórico.",
+    "direccion": "Rue de Rivoli, 75001 Paris",
+    "rating": 4.9
+  },
+  {
+    "id": "biz_007",
+    "nombre": "Jardines de París",
+    "descripcion": "Hermoso parque público ideal para pasear y relajarse.",
+    "direccion": "Rue de Médicis, 75006 Paris",
+    "rating": 4.7
+  },
+  {
+    "id": "biz_008",
+    "nombre": "Café de Flore",
+    "descripcion": "Una de las cafeterías más antiguas y prestigiosas de París.",
+    "direccion": "172 Bd Saint-Germain, 75006 Paris",
+    "rating": 4.5
   }
 ]

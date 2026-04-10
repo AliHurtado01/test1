@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../providers/maps_providers.dart';
 import '../../models/domain/category_marker.dart';
 import '../../utils/snackbar_util.dart';
+import '../../l10n/app_localizations.dart';
 
 class MapsScreen extends ConsumerStatefulWidget {
   final void Function(String markerId) onMarkerTap;
@@ -73,9 +74,10 @@ class _MapsScreenState extends ConsumerState<MapsScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    final l10n = AppLocalizations.of(context)!;
+
     ref.listen(mapViewModelProvider, (previous, next) {
       if (next.error != null && next.error != previous?.error) {
-        // Usamos nuestro utilitario con una sola línea
         SnackBarUtil.show(
           context,
           message: next.error!,
@@ -91,7 +93,6 @@ class _MapsScreenState extends ConsumerState<MapsScreen>
 
     final markersOnTab = state.markers
         .where((marker) {
-          // Los clusters siempre se muestran
           if (marker.markerId.value.startsWith('cluster_')) {
             return true;
           }
@@ -127,7 +128,7 @@ class _MapsScreenState extends ConsumerState<MapsScreen>
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Maps', style: TextStyle(color: Colors.white)),
+        title: Text(l10n.navMap, style: const TextStyle(color: Colors.white)),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Stack(
@@ -166,23 +167,22 @@ class _MapsScreenState extends ConsumerState<MapsScreen>
                       ),
                     ],
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 16,
                         height: 16,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       ),
-                      SizedBox(width: 8),
-                      Text('Loading markers...'),
+                      const SizedBox(width: 8),
+                      Text(l10n.loadingMarkers),
                     ],
                   ),
                 ),
               ),
             ),
 
-          //La barra horizontal de filtros
           Positioned(
             top: 16,
             left: 16,
@@ -201,28 +201,27 @@ class _MapsScreenState extends ConsumerState<MapsScreen>
                           switch (category) {
                             case CategoryMarker.restaurant:
                               icon = Icons.restaurant;
-                              // Cambiar a traducción
-                              labelText = 'Restaurantes';
+                              labelText = l10n.restaurants;
                               break;
                             case CategoryMarker.hotel:
                               icon = Icons.hotel;
-                              labelText = 'Hoteles';
+                              labelText = l10n.hotels;
                               break;
                             case CategoryMarker.store:
                               icon = Icons.store;
-                              labelText = 'Tiendas';
+                              labelText = l10n.stores;
                               break;
                             case CategoryMarker.museum:
                               icon = Icons.museum;
-                              labelText = 'Museos';
+                              labelText = l10n.museums;
                               break;
                             case CategoryMarker.park:
                               icon = Icons.park;
-                              labelText = 'Parques';
+                              labelText = l10n.parks;
                               break;
                             case CategoryMarker.cafe:
                               icon = Icons.local_cafe;
-                              labelText = 'Cafeterías';
+                              labelText = l10n.cafes;
                               break;
                             default:
                               icon = Icons.place;
@@ -240,31 +239,25 @@ class _MapsScreenState extends ConsumerState<MapsScreen>
                             ),
                           );
                         }),
-                    //Botón fijo de "Más" al final
                     Padding(
                       padding: const EdgeInsets.only(right: 8.0, left: 4.0),
                       child: ActionChip(
                         avatar: const Icon(
                           Icons.tune,
                           size: 18,
-                        ), // Icono de filtros
-                        label: const Text(
-                          'Más',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        label: Text(
+                          l10n.moreFilters,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         backgroundColor: Colors.grey.shade100,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
                         onPressed: () {
-                          //Navegar a la pantalla de todos los filtros
-                          // context.push(Routes.filters);
-
-                          // Mientras hacemos la pantalla, mostramos un mensajito para probar nuestro nuevo SnackBar :)
                           SnackBarUtil.show(
                             context,
-                            message:
-                                'Próximamente: Pantalla de todos los filtros',
+                            message: l10n.comingSoonFilters,
                             type: SnackBarType.info,
                             duration: const Duration(seconds: 2),
                           );

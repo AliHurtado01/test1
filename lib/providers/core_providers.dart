@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart'; // Añadido para poder usar la clase Locale
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../config/dio_config.dart';
 import '../data/services/location_service.dart';
@@ -33,4 +34,21 @@ final dioProvider = Provider<Dio>((ref) {
 
 final locationServiceProvider = Provider<LocationService>((ref) {
   return LocationService();
+});
+
+// Proveedor para gestionar el idioma de la aplicación
+class LocaleNotifier extends Notifier<Locale?> {
+  @override
+  Locale? build() {
+    // null significa que usará el idioma del sistema por defecto
+    return null; 
+  }
+
+  void changeLocale(Locale newLocale) {
+    state = newLocale;
+  }
+}
+
+final localeProvider = NotifierProvider<LocaleNotifier, Locale?>(() {
+  return LocaleNotifier();
 });
